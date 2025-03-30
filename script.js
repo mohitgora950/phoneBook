@@ -1,7 +1,6 @@
 let selectedContactId = null;
 let contacts = [];
 
-
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Page loaded, initializing contacts...");
     const storedContacts = localStorage.getItem("contacts");
@@ -9,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Loaded contacts:", contacts);
     viewContacts();
 });
-
 
 function addContact() {
     const name = document.getElementById("name").value.trim();
@@ -31,10 +29,9 @@ function addContact() {
     viewContacts();
 }
 
-
 function viewContacts() {
     console.log("viewContacts called");
- const tableBody = document.getElementById("contactTableBody");
+    const tableBody = document.getElementById("contactTableBody");
     if (!tableBody) {
         console.error("Table body element not found!");
         return;
@@ -44,7 +41,7 @@ function viewContacts() {
 
     if (contacts.length === 0) {
         const row = document.createElement("tr");
-        row.innerHTML = <td colspan="5">No contacts found.</td>;
+        row.innerHTML = `<td colspan="5">No contacts found.</td>`;
         tableBody.appendChild(row);
         return;
     }
@@ -68,7 +65,7 @@ function viewContacts() {
 function editContact(id) {
     const contact = contacts.find(c => c.id === id);
     if (!contact) {
- console.error("Contact not found for editing:", id);
+        console.error("Contact not found for editing:", id);
         return;
     }
 
@@ -77,7 +74,6 @@ function editContact(id) {
     document.getElementById("email").value = contact.email || "";
     selectedContactId = id;
 }
-
 
 function updateContact() {
     if (!selectedContactId) {
@@ -108,7 +104,6 @@ function updateContact() {
     viewContacts();
 }
 
-
 function deleteContact(id) {
     if (!confirm("Are you sure you want to delete this contact?")) return;
 
@@ -128,7 +123,6 @@ function saveContact() {
     }
 }
 
-
 function clearForm() {
     document.getElementById("name").value = "";
     document.getElementById("phone").value = "";
@@ -140,4 +134,11 @@ function updateLocalStorage() {
     localStorage.setItem("contacts", JSON.stringify(contacts));
 }
 
-
+// Ensure functions are accessible globally
+window.addContact = addContact;
+window.viewContacts = viewContacts;
+window.editContact = editContact;
+window.updateContact = updateContact;
+window.deleteContact = deleteContact;
+window.saveContact = saveContact;
+window.clearForm = clearForm;

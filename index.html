@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phone Book Management System</title>
-
 </head>
 <body>
     <div class="container">
@@ -18,11 +17,8 @@
             <label for="email">Email:</label>
             <input type="email" id="email" placeholder="Enter email (optional)">
             <div class="buttons">
-                <button onclick="addContact()">Add Contact</button>
                 <button onclick="saveContact()">Save</button>
-                <button onclick="updateContact()">Update Contact</button>
-                <button onclick="deleteContact()">Delete Contact</button>
-                <button onclick="viewContacts()">View Contacts</button>
+                <button onclick="clearForm()">Clear</button>
             </div>
         </div>
         <div id="contactList">
@@ -33,8 +29,8 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Phone Number</th>
-                        <th>Email</th
- <th>Action</th>
+                        <th>Email</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody id="contactTableBody"></tbody>
